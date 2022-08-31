@@ -97,3 +97,19 @@ This is the horse and the hound and the horn that belonged to the farmer sowing 
   end
 
 end
+
+class UnchangedOrdererTest < Minitest::Test
+  def test_order_is_not_changed
+    expected = ["This is some text.", "This is more text."]
+    assert_equal expected, UnchangedOrderer.new.order(expected)
+  end
+end
+
+class RandomOrdererTest < Minitest::Test
+  def test_order_is_changed
+    original = ["This is more text.", "This is some text."]
+    expected = ["This is some text.", "This is more text."]
+    # Random.srand(1)
+    assert_equal expected, UnchangedOrderer.new.order(original)
+  end
+end
